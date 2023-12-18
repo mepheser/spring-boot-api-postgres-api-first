@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: Demo API
+  version: 1.0.0
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+tags:
+  - name: DemoItem
+paths:
+  /demo-items:
+    post:
+      operationId: createDemoItem
+      summary: Creates a new demo item
+      tags:
+        - DemoItem
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/DemoItem'
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemoItem'
+  /demo-items/{id}:
+    get:
+      operationId: getDemoItem
+      summary: Creates a new demo item
+      tags:
+        - DemoItem
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+            format: long
+      responses:
+        '200': # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemoItem'
+
+components:
+  schemas:
+    DemoItem:
+      type: object
+      properties:
+        id:
+          type: number
+          format: long
+        title:
+          type: string

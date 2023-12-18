@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: 2023-12-17_CreateDemoItem.sql
+      relativeToChangelogFile: true
