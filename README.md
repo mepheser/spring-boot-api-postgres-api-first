@@ -52,6 +52,12 @@ Adding `liquibase-core` is enough to enable default liquibase setup. This search
 Unit tests are configured to start an internal postgres docker container with testcontainers. Liquibase automatically creates db structure automatically.
 Spring boot is automatically configured to use this postgres in jpa conf using custom `ApplicationContextInitializer`, see `AbstractDatabaseUnitTest`.   
 
+## REST integration tests with restassured and postgres container
+
+Integrations tests are configured also to start an internal postgres docker container with testcontainers. In addition, spring boot is started at random port and
+assertions are executed against actual REST results.
+
+
 ## Docker dev db
 
 To execute REST api locally in dev mode, run `docker-compose up db` to start an empty postgres container on port 9001. Start spring boot app with active profile `dev` to connect to the db. 
